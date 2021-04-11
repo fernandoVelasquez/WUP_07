@@ -1,5 +1,5 @@
 ---
-title: "Korea Covid"
+title: "Covid 19"
 author: "Fernando D Velasquez"
 date: "04/10/2021"
 output:
@@ -24,11 +24,15 @@ state of a patient must be died or alive - we adjust that as well
   
 # Question 1 - Is dying independent of sex
 
+$H_0$ Covid 19 Deaths in Korea are unrelated to gender
+$H_A$ Their is a relation between deaths in Korea and sex.
 
 
 
 Table of patients:
 ```{r}
+kRdata$Sex = as.factor(kRdata$Sex)
+kRdata$result= as.factor(kRdata$result)
 
 # cross tabulation, patient state by gender
 
@@ -38,22 +42,44 @@ with(kRdata, table(Sex, result))
 
 ## We create two bar charts - one based on frequency and the other on percent, use ggplot commands to do this
 
-`
+
+```{r}
+dd2 <- kRdata %>% group_by(result,Sex) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
+
+
+# the group_by followed by summarize(count=n())
+
+basicC <- ggplot(dd2,aes(x=Sex,y=count,fill=result))
+basicC + geom_bar(stat="identity",position="dodge")
+
+#Now for percentage plot
+
+basicCC <- ggplot(dd2,aes(x=Sex,y=prcnt*100,fill=result)) 
+basicCC + geom_bar(stat="identity", position = "dodge")
+```
 
   
-
-
+From the bar charts we can observe that koran females have a lower percent of dying from Covid 19 than males. 
 
 
 
   
 ## Numerical results
 
+```{r}
+table1 <- xtabs(~result + Sex, data=kRdata)
+rowPerc(table1)
+colPerc(table1)
+```
 
 ## Inferential results 
 
-
-
-
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
+  
+The p- value is 0.001 which we reject the null hypothesis.
 ## Conclusions
 
