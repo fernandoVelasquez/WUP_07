@@ -1,7 +1,7 @@
 ---
-title: "covid 19"
-author: "Dr K"
-date: "5/2/2020"
+title: "Korea Covid"
+author: "Fernando D Velasquez"
+date: "04/10/2021"
 output:
   html_document: default
   pdf_document: default
