@@ -71,6 +71,8 @@ table1 <- xtabs(~result + Sex, data=kRdata)
 rowPerc(table1)
 colPerc(table1)
 ```
+  
+From the numerical analysis we can see that more males have have die than female patients.  
 
 ## Inferential results 
 
@@ -80,6 +82,6 @@ chisqtestGC(table1)
 fisher.test(table1)
 ```
   
-The p- value is 0.001 which we reject the null hypothesis.
+The p- value is 0.001 which we reject the null hypothesis as males are 2.3 more likely to die than female patients. 
 ## Conclusions
 
