@@ -83,5 +83,7 @@ fisher.test(table1)
 ```
   
 The p- value is 0.001 which we reject the null hypothesis as males are 2.3 more likely to die than female patients. 
-## Conclusions
 
+## Conclusions  
+
+From what we can conclude we reject the null hypothesis as their is a difference between Korea Covid 19 deaths in sex. We can see that males are 2.3x more likely to die than females. As well the p- value indicates that our date could not occurred just by chance. 
